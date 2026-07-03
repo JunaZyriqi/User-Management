@@ -1,0 +1,66 @@
+﻿@using ImbUserManagment2.ViewModels
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div class="account-container">
+    <div class="account-box">
+        <h2 class="text-center mb-4">Register</h2>
+
+        <form asp-controller="Account" asp-action="Register" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Enter your name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" placeholder="example@imb.al" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 p-2">
+                Register
+            </button>
+
+            <p class="text-center mt-3 mb-1">
+                Already have an account?
+                <a asp-controller="Account" asp-action="Login" class="text-decoration-none">
+                    Login
+                </a>
+            </p>
+
+            <div class="text-center">
+                <a asp-controller="Home" asp-action="Index" class="text-decoration-none">
+                    Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

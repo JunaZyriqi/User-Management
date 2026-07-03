@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Email Sent";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div class="account-container">
+    <div class="account-box">
+        <h2 class="text-center mb-4">Email Sent</h2>
+
+        <p class="text-center">
+            A verification email has been sent to your email address.
+            Please check your inbox and follow the instructions.
+        </p>
+
+        <div class="text-center mt-2">
+            <a asp-controller="Account" asp-action="Login" class="text-decoration-none mt-2">
+                Back To Login
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

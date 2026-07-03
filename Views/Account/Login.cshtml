@@ -1,0 +1,79 @@
+﻿@using ImbUserManagment2.ViewModels
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div class="account-container">
+    <div class="account-box">
+        <h2 class="text-center mb-4">Login</h2>
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger text-center">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <form asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" placeholder="example@imb.al" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" placeholder="Enter password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label"></label>
+            </div>
+
+            <input type="submit" value="Login" class="btn btn-dark w-100 p-2" />
+        </form>
+
+        <div class="d-flex align-items-center my-3">
+            <hr class="flex-grow-1" />
+            <span class="mx-2 text-muted">or</span>
+            <hr class="flex-grow-1" />
+        </div>
+
+        <form asp-controller="Account" asp-action="ExternalLogin" method="post">
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" name="provider" value="Google" />
+
+            <button type="submit" class="btn btn-outline-dark w-100 p-2">
+                Continue with Google
+            </button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a asp-controller="Account" asp-action="Register" class="text-decoration-none">
+                Don't have an account?
+            </a>
+        </div>
+
+        <div class="text-center mt-2">
+            <a asp-controller="Account" asp-action="VerifyEmail" class="text-decoration-none">
+                Forgot password?
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,36 @@
+﻿# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Secrets / local config
+appsettings.Development.json
+appsettings.Local.json
+
+# Firebase / Google credentials
+*firebase*.json
+*serviceAccount*.json
+google-services.json
+credentials.json
+
+# Local database files
+*.mdf
+*.ldf
+
+# OS files
+.DS_Store
+Thumbs.db
+# Firebase secret key
+Firebase/key.json
+Firebase/*.json
+appsettings.json
+appsettings.Development.json

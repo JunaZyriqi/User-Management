@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "User Dashboard";
+}
+
+<style>
+    .user-page {
+        background: #f5f6f8;
+        min-height: 100vh;
+        padding: 40px 0;
+    }
+
+    .user-card {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 32px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .user-title {
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 8px;
+    }
+
+    .user-subtitle {
+        color: #6b7280;
+        margin-bottom: 0;
+    }
+</style>
+
+<div class="user-page">
+    <div class="container">
+        <div class="user-card">
+            <h2 class="user-title">User Dashboard</h2>
+            <p class="user-subtitle">
+                Welcome to your dashboard. This page is accessible only for users with the User role.
+            </p>
+        </div>
+    </div>
+</div>
